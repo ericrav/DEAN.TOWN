@@ -1,0 +1,61 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background-color: #9BBDE0;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+#bass {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  transform: width 0.1s;
+
+  img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.01, 1.01);
+    }
+
+    &:active {
+      transform: scale(0.99, 0.99);
+    }
+  }
+}
+
+$dur: 2.162s;
+.spin img {
+  animation: spin $dur infinite;
+  -webkit-animation: spin $dur infinite;
+  -moz-animation: spin $dur infinite;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
