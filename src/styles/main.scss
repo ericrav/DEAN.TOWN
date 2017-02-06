@@ -23,7 +23,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
-  transform: width 0.1s;
+  transition: width 0.1s ease-in;
 
   img {
     width: 100%;

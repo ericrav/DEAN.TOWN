@@ -21,40 +21,46 @@ const sound = new Howl({
 
 const playRest = () => {
   sound.play('rest');
-  sound.once('stop', finished);
+  setTimeout(finished, 162000);
   playingRest = true;
-  bassElement.style.width = 450;
+  bassElement.style.width = '450px';
   bassElement.className = 'spin';
 };
+
+playRest();
 
 const finished = () => {
   noteIndex = 0;
   playingRest = false;
-  bassElement.style.width = 200;
+  bassElement.style.width = '200px';
   bassElement.className = '';
 };
 
 let noteIndex = 0;
+let timer;
 const playNote = () => {
-  if (noteIndex >= notesCount) {
+  // reset click delay timer
+  clearTimeout(timer);
+  if (noteIndex >= notesCount || playingRest) {
     if (!playingRest) {
       playRest();
     }
     return;
   }
   const bpmAvg = estimateBpm(noteIndex);
-  console.log(bpmAvg);
-  if (noteIndex > 16) {
+  if (noteIndex > 8) {
     if (bpmAvg < 107.5) {
       noteIndex = 0;
-      bassElement.style.width = 200;
+      bassElement.style.width = '200px';
       return;
     }
   }
 
   sound.play('note' + noteIndex);
-  noteIndex++
+  noteIndex++;
   bassElement.style.width = 200 * (1 + noteIndex/100) + 'px';
+  // reset bass if not clicked again with a second
+  timer = setTimeout(finished, 500);
 };
 
 bassElement.addEventListener('click', playNote);
