@@ -19,6 +19,7 @@ const sound = new Howl({
   sprite: breaks
 });
 
+// reset bass
 const finished = () => {
   sound.stop();
   noteIndex = 0;
@@ -27,6 +28,7 @@ const finished = () => {
   bassElement.className = '';
 };
 
+// play rest of song after all sixteenth notes
 const playRest = () => {
   sound.play('rest');
   playingRest = true;
@@ -34,9 +36,6 @@ const playRest = () => {
   bassElement.className = 'spin';
   setTimeout(finished, 162000);
 };
-
-playRest();
-
 
 let noteIndex = 0;
 let timer;
