@@ -19,22 +19,24 @@ const sound = new Howl({
   sprite: breaks
 });
 
-const playRest = () => {
-  sound.play('rest');
-  setTimeout(finished, 162000);
-  playingRest = true;
-  bassElement.style.width = '450px';
-  bassElement.className = 'spin';
-};
-
-playRest();
-
 const finished = () => {
+  sound.stop();
   noteIndex = 0;
   playingRest = false;
   bassElement.style.width = '200px';
   bassElement.className = '';
 };
+
+const playRest = () => {
+  sound.play('rest');
+  playingRest = true;
+  bassElement.style.width = '450px';
+  bassElement.className = 'spin';
+  setTimeout(finished, 162000);
+};
+
+playRest();
+
 
 let noteIndex = 0;
 let timer;

@@ -23,18 +23,26 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 200px;
+  -moz-transition: width 0.1s ease-in;
+  -webkit-transition: width 0.1s ease-in;
   transition: width 0.1s ease-in;
 
   img {
     width: 100%;
     height: auto;
+    -moz-transition: -moz-transform 0.2s;
+    -webkit-transition: -webkit-transform 0.2s;
     transition: transform 0.2s;
 
     &:hover {
+      -moz-transform: scale(1.01, 1.01);
+      -webkit-transform: scale(1.01, 1.01);
       transform: scale(1.01, 1.01);
     }
 
     &:active {
+      -moz-transform: scale(0.99, 0.99);
+      -webkit-transform: scale(0.99, 0.99);
       transform: scale(0.99, 0.99);
     }
   }
@@ -42,9 +50,9 @@ body {
 
 $dur: 2.162s;
 .spin img {
-  animation: spin $dur infinite;
-  -webkit-animation: spin $dur infinite;
   -moz-animation: spin $dur infinite;
+  -webkit-animation: spin $dur infinite;
+  animation: spin $dur infinite;
 }
 
 @-moz-keyframes spin {

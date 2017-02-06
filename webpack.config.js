@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // general config stuff (not complete by itself)
 var config = {
@@ -15,6 +16,9 @@ var config = {
     filename: 'js/bundle.js'
   },
   plugins: [
+    new ExtractTextPlugin('styles/styleBundle.css', {
+      allChunks: true
+    }),
     new webpack.optimize.UglifyJsPlugin()
   ],
   module: {
@@ -28,9 +32,13 @@ var config = {
         },
         include: path.join(__dirname, 'src/js')
       },
+      // {
+      //   test: /\.scss$/,
+      //   loaders: ['style-loader', 'css-loader', 'sass-loader']
+      // },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        loader: ExtractTextPlugin.extract('style', 'css!sass')
       }
     ]
   }
