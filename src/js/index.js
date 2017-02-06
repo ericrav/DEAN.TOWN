@@ -14,7 +14,7 @@ for (let i = 0; i < notesCount; i++) {
 breaks['rest'] = [notesCount*sixteenth, 162000];
 
 const sound = new Howl({
-  src: ['../audio/deantown.mp3'],
+  src: ['/audio/deantown.mp3'],
   preload: true,
   sprite: breaks
 });
