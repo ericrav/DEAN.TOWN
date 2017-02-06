@@ -49,13 +49,7 @@ const playNote = () => {
     return;
   }
   const bpmAvg = estimateBpm(noteIndex);
-  if (noteIndex > 8) {
-    if (bpmAvg < 107.5) {
-      noteIndex = 0;
-      bassElement.style.width = '200px';
-      return;
-    }
-  }
+  if (noteIndex > 16 && bpmAvg < 106.8) return finished();
 
   sound.play('note' + noteIndex);
   noteIndex++;
